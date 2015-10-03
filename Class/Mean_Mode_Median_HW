@@ -1,0 +1,118 @@
+/* 
+	CSC 17a Mean, Median, mode
+
+*/
+
+#include <iostream>
+
+using namespace std;
+
+const int n = 5;
+
+void mode(int[], int);
+void mean(int[], int);
+void sort(int[], int);
+void median(int[], int);
+
+int main()
+{
+
+	int array[n];
+	float total = 0, mode;
+	int modeFreq[n];
+	//number of elements in array
+
+	//fill in the value of array
+	for (int i = 0; i<n; i++){
+		cout << "fill in the " << i + 1 << " number. :"; // instead of random, user inputs values to check if the program runs correctly
+		cin >> array[i];
+	}
+
+	sort(array, n);
+	return 0;
+}
+
+void mean(int new_array[], int num){
+	
+	float total = 0;
+	for (int i = 0; i<num; i++){
+		total += new_array[i];
+	}
+	cout << "Mean: " << total / num << endl;
+
+	// sending to void functions to calculate data w/o returning it entirely to main
+	mode(new_array, num);
+}
+
+void median(int new_array[], int tempNum){
+	
+
+	if (tempNum % 2 != 0){// odd
+		int temp = ((tempNum + 1) / 2) - 1;
+		cout << "Median: " << new_array[temp] << endl;
+	}
+	else{// even
+		cout << "Median: " << new_array[(tempNum / 2) - 1] << " and " << new_array[tempNum / 2] << endl;
+	}
+	mean(new_array, tempNum);
+}
+
+void mode(int new_array[], int num) {
+	int* ptrRep = new int[num]; // allocate in memory
+	
+	int modeFreq = 0;
+
+	for (int i = 0; i < num; i++) {
+		ptrRep[i] = 0; //initialize to 0
+		int j = 0;//
+		while ((j < i) && (new_array[i] != new_array[j])) {
+			if (new_array[i] != new_array[j]) {
+				j++;
+			}
+		}
+		(ptrRep[j])++;
+	
+	}
+	int Highest = 0; // highest repeating number(mode)
+	for (int i = 1; i < num; i++) {
+		if (ptrRep[i] > ptrRep[Highest]) {
+			Highest = i;
+			
+		}
+	}
+	cout << "Mode: " << new_array[Highest] << endl;
+
+	/*for (int count = 0; count < n; count++)   // trying to output the frequency of the modes
+	{
+		cout << "Number of Modes :" << modeFreq[count] << endl;
+	}*/
+}
+
+
+void sort(int new_array[], int num){
+	
+	int modeFreq[n];
+	for (int x = 0; x<num; x++){
+		for (int y = 0; y<num - 1; y++){
+			if (new_array[y]>new_array[y + 1]){
+				int temp = new_array[y + 1];
+				new_array[y + 1] = new_array[y];
+				new_array[y] = temp;
+			}
+		}
+	}
+	
+	for (int i = 0; i<num; i++){
+		cout << new_array[i] << " ";
+		/*if (new_array[i] == new_array[i + 1])	// trying to use the sorted numbers in comparison to find frequency
+		{
+			modeFreq[i] = i++;
+		}*/
+
+	}
+
+	
+
+	cout << "\n";
+	median(new_array, num);
+}
