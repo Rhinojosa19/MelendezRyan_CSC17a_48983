@@ -1,0 +1,58 @@
+/*
+Ryan Melendez
+
+Chapter 9 Problem 1
+
+Dynamically Allocate an array of integers
+
+*/
+
+
+#include <iostream>
+
+using namespace std;
+
+
+//function prototypes 
+void sortArr(int *, int);
+
+int main()
+{
+	const int COLUMN_MAX = 5;
+	int *iptr = nullptr;
+	iptr = new int[COLUMN_MAX]; // create the data type that the pointer will emulate
+
+	for (int i = 0; i < COLUMN_MAX; i++)
+	{
+		cout << "Please enter some integers: ";
+		cin >> iptr[i];
+	}
+
+	sortArr(iptr, COLUMN_MAX);
+	//sort function 
+
+	return 0;
+}
+
+
+void sortArr(int * arr, int n)
+{
+	for (int i = 0; i < n; i++)
+	{// sort function
+		for (int y = 0; y<n - 1; y++){
+			if (arr[y]>arr[y + 1]){
+				int temp = arr[y + 1];
+				arr[y + 1] = arr[y];
+				arr[y] = temp;
+			}
+		}
+	}
+	// display the numbers in order 
+	cout << endl;
+	cout << "Integers in order are :" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << " " << endl;
+	}
+
+}
