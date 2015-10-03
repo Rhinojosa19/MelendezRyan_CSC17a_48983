@@ -1,0 +1,82 @@
+/* Ryan Melendez
+CSC 17A
+*/
+
+#include <iostream>
+
+using namespace std;
+
+const int COLUMN_MAX = 5;
+
+// function prototypes
+void calcAvg(int *);
+void sort(int *, int);
+
+
+
+int main()
+{
+	int scores[COLUMN_MAX];
+
+	
+	//function for sorting the test scores( int )
+	sort(scores, COLUMN_MAX);
+	//function for calculating the average and displaying the scores (void)
+
+	return 0;
+}
+
+
+void sort(int *newArray, int n)
+{
+	for (int count = 0; count < COLUMN_MAX; count++)
+	{
+		cout << "Please enter the the score for Test " << count + 1 << endl;
+		cin >> newArray[count];
+
+		while (newArray[count] < 0)
+		{
+			cout << "Error, please enter a number greater than zero! " << endl;
+			cin >> newArray[count];
+		}
+	}
+	
+	for (int x = 0; x<n; x++)
+	{
+		for (int y = 0; y<n - 1; y++)
+		{
+			if (newArray[y]>newArray[y + 1])
+			{
+				int temp = newArray[y + 1];
+				newArray[y + 1] = newArray[y];
+				newArray[y] = temp;
+			}
+		}
+	}
+
+	calcAvg(newArray);
+
+}
+
+void calcAvg(int *arr)
+{
+	int sum = 0;
+	float average = 0;
+
+	for (int i = 0; i < COLUMN_MAX; i++)
+	{
+		
+		sum += arr[i];
+	}
+
+	average = sum / COLUMN_MAX;
+	
+	
+	for (int i = 0; i < COLUMN_MAX; i++)
+	{
+		cout << "Test " << i + 1 << ": " << arr[i] << endl; //array
+	}
+
+	cout << "The Average is : " << average << endl;
+	
+}
