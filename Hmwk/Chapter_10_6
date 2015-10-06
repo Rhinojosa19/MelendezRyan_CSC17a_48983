@@ -1,0 +1,49 @@
+/* Ryan Melendez
+CSC-17a
+
+*/
+
+
+#include <iostream> 
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	const int size = 20;
+
+	int sum=0, 
+		highest=0, 
+		lowest=INT_MAX;
+
+	int total = 0;
+
+	char nums[size];
+	
+
+	cout << "Please enter the numbers your numbers: " << endl;
+	cin.get(nums, size);
+
+		
+	for (int j = 0; j < strlen(nums); j++) // dynamic for loop since max value depends on string entered
+	{
+		total += nums[j] - '0';
+		if (nums[j] - '0' > highest)
+			{
+				highest = nums[j] - '0';
+			}
+		if (nums[j] - '0' < lowest)
+			{
+				lowest = nums[j] - '0';
+			}		
+	}
+	
+	
+	
+	cout << endl;
+	cout << "The highest number was: " << highest << endl;
+	cout << "The lowest number was: " << lowest << endl;
+	cout << "The sum is: " << total << endl;
+	return 0;
+}
