@@ -1,0 +1,100 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+struct MonthlyBudget
+{
+	int housing =0,
+		utility=0,
+		hexpns=0,
+		transp=0,
+		food=0,
+		medical=0,
+		insur=0,
+		entrtmnt=0,
+		clothes=0,
+		misc=0;
+};
+
+void getInfo(MonthlyBudget&, int);
+void dispRes(int, MonthlyBudget, char);
+
+int main()
+{
+	const int total = 1420;
+
+	MonthlyBudget studntExp;
+
+	getInfo(studntExp, total);	
+
+	return 0;
+}
+
+void getInfo(MonthlyBudget &studntExp, int total)
+{
+	
+	int newTotal = 0;
+	int difference = 0;
+	char sign;
+
+	cout << "Please enter your total for Housing: $";
+	cin >> studntExp.housing;
+	cout << "Please enter your total for Utilities: $";
+	cin >> studntExp.utility;
+	cout << "Please enter your total for Housing Expenses: $";
+	cin >> studntExp.hexpns;
+	cout << "Please enter your total for Transportation: $";
+	cin >> studntExp.transp;
+	cout << "Please enter your total for Food: $";
+	cin >> studntExp.food;
+	cout << "Please enter your total for Medical: $";
+	cin >> studntExp.medical;
+	cout << "Please enter your total for Insurance: $";
+	cin >> studntExp.insur;
+	cout << "Please enter your total for Entertainment: $";
+	cin >> studntExp.entrtmnt;
+	cout << "Please enter your total for Clothing: $" ;
+	cin >> studntExp.clothes;
+	cout << "Please enter your total for Miscellaneous: $";
+	cin >> studntExp.misc;
+	cout << endl;
+
+	newTotal = studntExp.housing + studntExp.utility + studntExp.hexpns + studntExp.transp + studntExp.food + studntExp.medical + studntExp.insur + studntExp.entrtmnt
+		+ studntExp.clothes + studntExp.misc;
+
+
+	difference = total - newTotal;
+	if (difference > 0)
+	{
+		sign = '+';
+
+	}
+	if (difference < 0)
+	{
+		sign = '-';
+
+	}
+
+
+	dispRes(difference, studntExp, sign);
+}
+
+void dispRes(int total, MonthlyBudget tempdata, char sign)
+{
+	cout << "Category         Amount Spent" << endl;
+
+	cout << "Housing :        $"  << tempdata.housing << endl;
+	cout << "Utilities :      $"  << tempdata.utility << endl;
+	cout << "Expenses :       $"  << tempdata.hexpns << endl;	//housing expenses
+	cout << "Transportation : $"  << tempdata.transp << endl;
+	cout << "Food :           $"  << tempdata.food << endl;
+	cout << "Medical :        $"  << tempdata.medical << endl;
+	cout << "Insurance :      $"  << tempdata.insur << endl;
+	cout << "Entertainment :  $"  << tempdata.entrtmnt << endl;
+	cout << "Clothing :       $"  << tempdata.clothes << endl;
+	cout << "Miscellaneous :  $"  << tempdata.misc << endl << endl;
+
+	cout << "Youre difference is: " << sign << total << endl;
+}
