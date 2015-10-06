@@ -1,0 +1,92 @@
+/*
+Ryan Melendez
+CSC-17a
+*/
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+int main()
+{
+	const int size = 20;
+	
+	char word[size];
+	char choice;
+	bool sndchoice = 0;
+
+	cout << "Please enter a word greater than 5 characters: ";
+	cin.get(word,size);
+	
+	do
+	{
+
+		int consonant =0;
+		
+		int vowcount = 0;
+		cout << endl;
+		cout << "Please make a choice: " << endl;
+		cout << "A. Count the number of vowels " << endl;
+		cout << "B. Count the number of consonants " << endl;
+		cout << "C. Count both vowels and consonants " << endl;
+		cout << "D. Enter another word " << endl;
+		cout << "E. Exit the program" << endl;
+		cin >> choice;
+
+		switch (choice)
+		{
+			case 'a':
+			{
+				for (int i = 0; i < size; i++)
+				{
+					if (word[i] == 'a' || word[i] == 'a' || word[i] == 'e' || word[i] == 'i' || word[i] == 'o' || word[i] == 'u')
+					{
+						vowcount++;
+					}
+				}
+
+				cout << "There are " << vowcount << " vowels " << endl;
+				break;
+			}
+			case 'b':
+			{
+				for (int i = 0; i < size; i++)
+				{
+					if (word[i] == 'a' || word[i] == 'a' || word[i] == 'e' || word[i] == 'i' || word[i] == 'o' || word[i] == 'u')
+					{
+						vowcount++;
+					}
+				}
+
+				consonant = strlen(word) - vowcount;
+
+				cout << "There are " << consonant << " consonants " << endl;
+
+				break;
+			}
+			case 'c':
+			{
+				cout << "There are a total of " << strlen(word) << " characters " << endl;
+				break;
+			}
+			case 'd':
+			{
+				cin.ignore();
+				cout << "Please enter a word greater than 5 characters: ";
+				cin.get(word, size);
+				break;
+			}		
+			case 'e':
+			{
+				sndchoice = 1;
+				break;
+
+			}
+		}
+	} while (sndchoice == 0);
+
+	return 0;
+}
