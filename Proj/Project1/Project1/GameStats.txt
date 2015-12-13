@@ -1,0 +1,9 @@
+============================================
+       Melendez and Ryan       
+     Thanks for playing Battleship!         
+============================================
+Player 1: Ryan
+Player 2: Melendez
+The total amount of shots missed was: 23
+The total amount of shots hit was: 22
+The winner was Player 2 !!

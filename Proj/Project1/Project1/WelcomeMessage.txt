@@ -1,0 +1,7 @@
+Welcome to BATTLESHIP the game. Version 1.0
+
+In this game your objective is to sink the opposing players ships one unit at a time.
+Each player is given one turn to guess the coordinates of the others ships.
+A hit will be represented by a X and a miss by a O.
+
+
